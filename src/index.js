@@ -1,17 +1,47 @@
-import React from 'react';
+//1.Import Area
+
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+//2.Class Defination Area
+//Every component can have its own data
+class A extends Component{
+    //1.Properties/Variable
+    state;
+
+
+    //2.Constructor
+    constructor(){
+        super();
+        this.state = {
+                        name:"Rohit",
+                        surname:"Sharma",
+                        address:"Neemuch"
+                     }
+
+
+                     
+    }
+
+
+    //3.Methods
+    render(){
+        this.setState({
+            ...this.state,  //... is a spread operator
+            name:"Minakshi"
+        });
+        return       <>
+                    <h1>GAUTAM {this.state.name} {this.state.surname} {this.state.address} </h1>;
+                    <h1>GAUTAM {this.state.address} </h1>;
+                    <h1>GAUTAM {this.props.name} {this.props.surname} {this.props.children}</h1>;
+                    <h1>GAUTAM {this.props.name} {this.props.children}</h1>;
+                </>
+    }
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<A name="Virat" surname="Kohli">Delhi</A>);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+//3.Export Area
